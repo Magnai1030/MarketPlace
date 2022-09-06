@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import PostButton from '@layouts/PostButton';
+import Home from '@screens/Home';
 
-import HomeTab from '@layouts/HomeTab';
 import SearchTab from '@layouts/SearchTab';
 import FavouriteTab from '@layouts/FavouriteTab';
 import PostTab from '@layouts/PostTab';
@@ -27,10 +28,11 @@ import ProfileActiveIcon from '@icons/ic_profile_active.svg';
 
 import Colors from '@constants/Colors';
 import Variables from '@constants/Variables';
+import PostDetail from '@screens/PostDetail';
 
 const Tab = createBottomTabNavigator();
 
-const Router = () => {
+const TabRouter = () => {
     return (
         <Tab.Navigator
             screenOptions={{
@@ -39,7 +41,7 @@ const Router = () => {
             }}>
             <Tab.Screen
                 name="Home"
-                component={HomeTab}
+                component={Home}
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
@@ -91,6 +93,29 @@ const Router = () => {
                 }}
             />
         </Tab.Navigator>
+    );
+};
+
+const Stack = createNativeStackNavigator();
+
+const Router = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="TabRouter"
+                component={TabRouter}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="PostDetail"
+                component={PostDetail}
+                options={() => ({
+                    headerShown: false,
+                })}
+            />
+        </Stack.Navigator>
     );
 };
 

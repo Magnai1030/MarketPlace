@@ -1,10 +1,15 @@
 import Colors from '@constants/Colors';
 import Variables from '@constants/Variables';
-import React from 'react';
+import React, { FC } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { SubCategoryItemI } from '@types';
 
-const SubCategoryItem = () => {
-    return <View style={styles.container}></View>;
+type CategoryProps = {
+    element: SubCategoryItemI;
+};
+
+const SubCategoryItem: FC<CategoryProps> = ({ element }) => {
+    return <View style={styles.container}>{<element.icon />}</View>;
 };
 
 const styles = StyleSheet.create({
@@ -13,6 +18,8 @@ const styles = StyleSheet.create({
         borderRadius: Variables.mediumBorderRadius,
         ...Variables.shadow,
         marginLeft: 7.5,
+        alignItems: 'center',
+        justifyContent: 'center',
         marginRight: 7.5,
         height: 44,
         width: 44,

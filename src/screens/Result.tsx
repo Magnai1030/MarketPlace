@@ -9,22 +9,43 @@ import SubCategoryContainer from '@containers/SubCategoryContainer';
 
 const Result = () => {
     const [data, setData] = useState([
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
-        { price: 12000 },
+        {
+            type: 'normal',
+            items: [
+                { price: 12000 },
+                { price: 12000 },
+                { price: 12000 },
+                { price: 12000 },
+                { price: 12000 },
+                { price: 12000 },
+            ],
+        },
+        {
+            type: 'abnormal',
+            abnormalIndex: 0,
+            items: [{ price: 12000 }, { price: 12000 }, { price: 12000 }],
+        },
+        {
+            type: 'normal',
+            items: [
+                { price: 12000 },
+                { price: 12000 },
+                { price: 12000 },
+                { price: 12000 },
+                { price: 12000 },
+                { price: 12000 },
+            ],
+        },
+        {
+            type: 'abnormal',
+            abnormalIndex: 1,
+            items: [{ price: 12000 }, { price: 12000 }, { price: 12000 }],
+        },
+
+        {
+            type: 'normal',
+            items: [{}, {}, {}],
+        },
     ]);
     return (
         <Screen scroll={ScreenType.NOTSCROLLABLE}>

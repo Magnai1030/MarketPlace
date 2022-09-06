@@ -32,20 +32,12 @@ const SellerContainer: React.FC<SellerProps> = ({ id }) => {
                 </View>
             </View>
             <View style={styles.buttonContainer}>
-                <Pressable style={styles.offerButtonStyle}>
-                    <CustomText
-                        color={Colors.secondaryColor}
-                        size={Variables.normalTextSize}
-                        family={Family.SEMIBOLD}>
-                        OFFER
-                    </CustomText>
-                </Pressable>
                 <Pressable style={styles.questionButtonStyle}>
                     <CustomText
                         color={Colors.whiteColor}
                         size={Variables.normalTextSize}
                         family={Family.SEMIBOLD}>
-                        QUESTION
+                        SEND QUESTION
                     </CustomText>
                 </Pressable>
             </View>
@@ -95,20 +87,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
     },
-    offerButtonStyle: {
-        flex: 1,
-        height: 55,
-        marginRight: 5,
-        borderWidth: 2,
-        borderColor: Colors.secondaryColor,
-        borderRadius: Variables.normalBorderRadius,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     questionButtonStyle: {
         flex: 1,
         height: 55,
-        marginLeft: 5,
         backgroundColor: Colors.primaryColor,
         borderRadius: Variables.normalBorderRadius,
         alignItems: 'center',

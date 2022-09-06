@@ -10,6 +10,8 @@ import RightIcon from '@icons/ic_right.svg';
 
 import CustomText, { Family } from '@custom/CustomText';
 import ImageZoomModal from '@modals/ImageZoomModal';
+import { AlertType } from '@types';
+import { AlertContext, InitialValue } from '@providersPath/Alert';
 
 export type PostImageProps = {
     images: string[];
@@ -18,6 +20,7 @@ export type PostImageProps = {
 const PostImageContainer: React.FC<PostImageProps> = ({
     images: postImages,
 }: PostImageProps) => {
+    const { pushAlertData } = React.useContext(AlertContext) as InitialValue;
     const [imageIndex, setImageIndex] = useState<number>(0);
     const [isLoadImageZoom, setIsLoadImageZoom] = useState<boolean>(false);
 
@@ -28,7 +31,10 @@ const PostImageContainer: React.FC<PostImageProps> = ({
         setIsLoadImageZoom(true);
     };
     const onPressLike = () => {
-        console.log('like');
+        pushAlertData({
+            title: 'Successfully saved',
+            type: AlertType.SUCCESS,
+        });
     };
     const handleClose = () => {
         setIsLoadImageZoom(false);

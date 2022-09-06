@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
 import Screen, { ScreenType } from '@custom/Screen';
 import { gql, useQuery } from '@apollo/client';
 import ProductContainer from '@containers/ProductContainer';
@@ -35,7 +35,11 @@ const Home = () => {
             {
                 type: 'abnormal',
                 abnormalIndex: 0,
-                items: [{ price: 12000 }, { price: 12000 }, { price: 12000 }],
+                items: [
+                    { price: 12000 },
+                    { price: 12000 },
+                    { price: 12000, isSoldOut: true },
+                ],
             },
             {
                 type: 'normal',
@@ -45,7 +49,7 @@ const Home = () => {
                     { price: 12000 },
                     { price: 12000 },
                     { price: 12000 },
-                    { price: 12000 },
+                    { price: 12000, isSoldOut: true },
                 ],
             },
             {
@@ -60,9 +64,6 @@ const Home = () => {
             },
         ]);
     }, []);
-    // useEffect(() => {
-    //     console.log(data);
-    // }, [data]);
     return (
         <Screen scroll={ScreenType.NOTSCROLLABLE}>
             <SearchContainer isRound={false} />

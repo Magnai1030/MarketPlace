@@ -18,18 +18,6 @@ export type ScreenProps = {
     scroll: ScreenType;
 };
 
-// const ScreenType = ({ children, scroll }) => {
-//     if (scroll) {
-//         return (
-//             <ScrollView showsVerticalScrollIndicator={false}>
-//                 <View style={styles.subContainer}>{children}</View>
-//             </ScrollView>
-//         );
-//     } else {
-//         return <View style={styles.subContainer}>{children}</View>;
-//     }
-// };
-
 const Screen: React.FC<ScreenProps> = ({ children, scroll }) => {
     return (
         <SafeAreaView style={styles.container}>

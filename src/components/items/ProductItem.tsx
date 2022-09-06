@@ -35,6 +35,16 @@ const ProductItem: React.FC<{
                 }}
                 resizeMode={FastImage.resizeMode.cover}
             />
+            {details && details.isSoldOut ? (
+                <View style={styles.soldOutContainer}>
+                    <CustomText
+                        color={Colors.whiteColor}
+                        size={Variables.mediumTextSize}
+                        family={Family.SEMIBOLD}>
+                        SOLD OUT
+                    </CustomText>
+                </View>
+            ) : null}
             <View style={styles.favouriteContainer}>
                 <HeartIcon />
             </View>
@@ -57,6 +67,8 @@ const styles = StyleSheet.create({
         marginTop: 2.5,
         marginBottom: 2.5,
         backgroundColor: Colors.darkNeutralColor,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     imageStyle: {
         width: '100%',
@@ -82,6 +94,15 @@ const styles = StyleSheet.create({
         width: 33,
         height: 33,
         borderBottomRightRadius: Variables.normalBorderRadius,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    soldOutContainer: {
+        position: 'absolute',
+        backgroundColor: Colors.hightOpacityWarningColor,
+        width: '100%',
+        height: 33,
         alignItems: 'center',
         justifyContent: 'center',
     },

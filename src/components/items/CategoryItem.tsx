@@ -1,19 +1,21 @@
 import CustomText, { Family } from '@components/custom/CustomText';
 import Colors from '@constants/Colors';
 import Variables from '@constants/Variables';
-import React from 'react';
+import { CategoryItemI } from '@types';
+
+import React, { FC } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const CategoryItem = () => {
+const CategoryItem: FC<CategoryItemI> = ({ element }) => {
     return (
         <View style={styles.container}>
             <CustomText
                 color={Colors.blackColor}
                 family={Family.REGULAR}
                 size={Variables.smallTextSize}>
-                Loksajdklsaj
+                {element.title}
             </CustomText>
-            <View style={styles.localContainer} />
+            {element.isActive ? <View style={styles.localContainer} /> : null}
         </View>
     );
 };

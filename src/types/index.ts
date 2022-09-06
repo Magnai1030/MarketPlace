@@ -7,6 +7,7 @@ export type ChildProps = {
 
 export interface Product {
     price?: number;
+    isSoldOut?: boolean;
 }
 
 export interface QAItemI {
@@ -44,6 +45,15 @@ export interface AlertI {
 
 export interface TagItemI {
     title: string;
+}
+
+export interface CategoryItemI {
+    title: string;
+    isActive: boolean;
+}
+
+export interface SubCategoryItemI {
+    icon: React.ReactNode;
 }
 
 export interface UserI {

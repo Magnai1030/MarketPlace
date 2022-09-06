@@ -12,9 +12,13 @@ import { useNavigation } from '@react-navigation/native';
 import BackIcon from '@icons/ic_back.svg';
 import { FormatCurrency } from '@services/Helper';
 import QAndAContainer from '@components/containers/QAndAContainer';
+import LoginModal from '@modals/LoginModal';
+import SignUpModal from '@modals/SignUpModal';
 import { TableItemI, TagItemI, QAItemI } from '@types';
 
 const PostDetail = () => {
+    const [isLoadLogIn, setIsLoadLogIn] = useState<boolean>(false);
+    const [isLoadSignUp, setIsLoadSignUp] = useState<boolean>(false);
     const navigation = useNavigation();
     const onPressBack = () => {
         navigation?.goBack();
@@ -35,6 +39,14 @@ const PostDetail = () => {
         { title: 'Sold by', description: 'Amazon' },
         { title: 'Item Dimensions', description: '123,321,213' },
     ]);
+
+    const onCloseLogIn = () => {
+        setIsLoadLogIn(false);
+    };
+
+    const onCloseSignUp = () => {
+        setIsLoadSignUp(false);
+    };
     return (
         <Screen scroll={ScreenType.NOTSCROLLABLE}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -102,26 +114,28 @@ const PostDetail = () => {
                         <QAndAContainer datas={qaData} />
                     </View>
                     <SellerContainer id="s" />
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.offerButtonStyle}>
-                            <CustomText
-                                color={Colors.secondaryColor}
-                                size={Variables.normalTextSize}
-                                family={Family.SEMIBOLD}>
-                                OFFER
-                            </CustomText>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.buyButtonStyle}>
-                            <CustomText
-                                color={Colors.whiteColor}
-                                size={Variables.normalTextSize}
-                                family={Family.SEMIBOLD}>
-                                BUY
-                            </CustomText>
-                        </TouchableOpacity>
-                    </View>
                 </View>
             </ScrollView>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.offerButtonStyle}>
+                    <CustomText
+                        color={Colors.secondaryColor}
+                        size={Variables.normalTextSize}
+                        family={Family.SEMIBOLD}>
+                        OFFER
+                    </CustomText>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buyButtonStyle}
+                    onPress={() => setIsLoadLogIn(true)}>
+                    <CustomText
+                        color={Colors.whiteColor}
+                        size={Variables.normalTextSize}
+                        family={Family.SEMIBOLD}>
+                        BUY
+                    </CustomText>
+                </TouchableOpacity>
+            </View>
             <TouchableOpacity
                 onPress={() => onPressBack()}
                 style={styles.backButtonStyle}>
@@ -131,6 +145,7 @@ const PostDetail = () => {
                 <CustomText
                     color={Colors.whiteColor}
                     size={Variables.normalTextSize}
+                    customStyle={{ textDecorationLine: 'line-through' }}
                     family={Family.REGULAR}>
                     {FormatCurrency(1200000)}
                 </CustomText>
@@ -141,6 +156,8 @@ const PostDetail = () => {
                     {FormatCurrency(1000000)}
                 </CustomText>
             </View>
+            <LoginModal isLoad={isLoadLogIn} onClose={onCloseLogIn} />
+            <SignUpModal isLoad={isLoadSignUp} onClose={onCloseSignUp} />
         </Screen>
     );
 };
@@ -150,7 +167,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flex: 1,
         alignItems: 'center',
-        paddingBottom: 60,
+        paddingBottom: 15,
     },
 
     infoContainer: {
@@ -196,9 +213,11 @@ const styles = StyleSheet.create({
         ...Variables.shadow,
     },
     buttonContainer: {
-        width: Variables.deviceWidth - 30,
+        width: '100%',
         flexDirection: 'row',
-        marginTop: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 15,
     },
     offerButtonStyle: {
         paddingLeft: 20,

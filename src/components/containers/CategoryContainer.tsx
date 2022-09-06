@@ -1,22 +1,49 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import CategoryItem from '@items/CategoryItem';
+
 import Colors from '@constants/Colors';
 
 const CategoryContainer = () => {
+    const categories = [
+        {
+            title: 'Computer',
+            isActive: false,
+        },
+        {
+            title: 'Clothes',
+            isActive: true,
+        },
+        {
+            title: 'Electronics',
+            isActive: false,
+        },
+        {
+            title: 'Accesories',
+            isActive: false,
+        },
+        {
+            title: 'Book',
+            isActive: false,
+        },
+        {
+            title: 'Supplements',
+            isActive: false,
+        },
+        {
+            title: 'Other',
+            isActive: false,
+        },
+    ];
     return (
         <ScrollView
             showsHorizontalScrollIndicator={false}
             style={styles.container}
             horizontal>
             <View style={styles.itemContainer}>
-                <CategoryItem />
-                <CategoryItem />
-                <CategoryItem />
-                <CategoryItem />
-                <CategoryItem />
-                <CategoryItem />
-                <CategoryItem />
+                {categories.map(element => (
+                    <CategoryItem element={element} />
+                ))}
             </View>
         </ScrollView>
     );
